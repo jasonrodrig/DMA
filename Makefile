@@ -53,5 +53,5 @@ stash:
 
 pull:
 	@printf "$(BLUE)[PULL]$(NC) Pulling latest changes...\n"
-	@git pull origin main || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
+	@git pull || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
 	@printf "$(GREEN)[PULL]$(NC) Pull successful!\n"
