@@ -38,8 +38,9 @@ log:
 	less -R simulation.log
 
 clean:
-	rm -rf transcript work covReport/
-	rm dump.vcd simulation.log dma_top.log coverage.ucdb 
+	rm transcript 
+	rm -rf work #covReport
+	rm wave.vcd #simulation.log dma_top.log  
 
 clear:
 	clear
