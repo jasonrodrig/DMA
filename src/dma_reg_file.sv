@@ -6,8 +6,8 @@
 `include "dma_status_register.sv"           
 `include "dma_transfer_count_register.sv"   
 `include "dma_descriptor_addr_register.sv"  
-//`include "dma_error_status_register.sv"     
-//`include "dma_configure_register.sv"
+`include "dma_error_status_register.sv"     
+`include "dma_configure_register.sv"
 
 class dma_reg_file extends uvm_reg_file;
   `uvm_object_utils(dma_reg_file)
@@ -20,8 +20,8 @@ class dma_reg_file extends uvm_reg_file;
 	rand dma_status_reg           status;
   rand dma_transfer_count_reg   transfer_count;
 	rand dma_descriptor_addr_reg  descriptor_addr;
-  //rand dma_error_status_reg     error_status;
-	//rand dma_configure_reg        configure;
+  rand dma_error_status_reg     error_status;
+	rand dma_configure_reg        configuration;
 
 	function new(string name = "dma_reg_file");
 		super.new(name);
@@ -37,8 +37,8 @@ class dma_reg_file extends uvm_reg_file;
 	status           = dma_status_reg::type_id::create("status");
   transfer_count   = dma_transfer_count_reg::type_id::create("transfer_count");
   descriptor_addr  = dma_descriptor_addr_reg::type_id::create("descriptor_addr");
-  //error_status     = dma_error_status_reg::type_id::create("error_status");
-	//configure        = dma_configure_reg::type_id::create("configure");
+  error_status     = dma_error_status_reg::type_id::create("error_status");
+	configuration    = dma_configure_reg::type_id::create("configure");
 
   intr.build();
   ctrl.build();
@@ -48,8 +48,8 @@ class dma_reg_file extends uvm_reg_file;
 	status.build();
 	transfer_count.build();
   descriptor_addr.build();
-//	error_status.build();
-//  configure.build();
+  error_status.build();
+  configuration.build();
 
  endfunction
 

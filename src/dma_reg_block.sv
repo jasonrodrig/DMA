@@ -22,8 +22,8 @@ class dma_reg_block extends uvm_reg_block;
 		reg_file.status.configure(this);
 		reg_file.transfer_count.configure(this);
 		reg_file.descriptor_addr.configure(this);
-  	//reg_file.error_status.configure(this);
-		//reg_file.configure.configure(this);
+  	reg_file.error_status.configure(this);
+		reg_file.configuration.configure(this);
 
 		default_map.add_reg(reg_file.intr,            'h400, "RO");
 		default_map.add_reg(reg_file.ctrl,            'h404, "RW");
@@ -33,8 +33,8 @@ class dma_reg_block extends uvm_reg_block;
 		default_map.add_reg(reg_file.status,          'h414, "RO");
 		default_map.add_reg(reg_file.transfer_count,  'h418, "RO");
 		default_map.add_reg(reg_file.descriptor_addr, 'h41C, "RW");
-		//default_map.add_reg(reg_file.error_status,    'h420, "RW1C");
-		//default_map.add_reg(reg_file.configure,       'h424, "RW");
+		default_map.add_reg(reg_file.error_status,    'h420, "RW");
+		default_map.add_reg(reg_file.configuration,   'h424, "RW");
 
 		lock_model();
 	endfunction

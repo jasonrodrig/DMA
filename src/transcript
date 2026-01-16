@@ -1,5 +1,5 @@
 # vsim -c top "+UVM_VERBOSITY=UVM_MEDIUM" -do "run -all; exit" 
-# Start time: 01:15:50 on Jan 16,2026
+# Start time: 20:25:58 on Jan 16,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
@@ -54,14 +54,14 @@
 # uvm_test_top               dma_test                                -     @473 
 #   env                      dma_env                                 -     @480 
 #     agt                    dma_agent                               -     @515 
-#       driv                 dma_driver                              -     @582 
-#         rsp_port           uvm_analysis_port                       -     @597 
-#         seq_item_port      uvm_seq_item_pull_port                  -     @589 
-#       mon                  dma_monitor                             -     @605 
-#         mon_port           uvm_analysis_port                       -     @612 
-#       seqr                 dma_sequencer                           -     @620 
-#         rsp_export         uvm_analysis_export                     -     @627 
-#         seq_item_export    uvm_seq_item_pull_imp                   -     @721 
+#       driv                 dma_driver                              -     @601 
+#         rsp_port           uvm_analysis_port                       -     @616 
+#         seq_item_port      uvm_seq_item_pull_port                  -     @608 
+#       mon                  dma_monitor                             -     @624 
+#         mon_port           uvm_analysis_port                       -     @631 
+#       seqr                 dma_sequencer                           -     @639 
+#         rsp_export         uvm_analysis_export                     -     @646 
+#         seq_item_export    uvm_seq_item_pull_imp                   -     @740 
 #         arbitration_queue  array                                   0     -    
 #         lock_queue         array                                   0     -    
 #         num_last_reqs      integral                                32    'd1  
@@ -91,5 +91,5 @@
 # [dma_subscriber]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 25 ns  Iteration: 62  Instance: /top
-# End time: 01:15:54 on Jan 16,2026, Elapsed time: 0:00:04
+# End time: 20:26:02 on Jan 16,2026, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 0

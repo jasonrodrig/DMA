@@ -18,10 +18,16 @@ class dma_adapter extends uvm_reg_adapter;
 	function void bus2reg(uvm_sequence_item bus_item, ref uvm_reg_bus_op rw);
 		dma_sequence_item seq;
 		assert($cast(seq, bus_item));
-		rw.kind = ( seq.wr_en == 1'b1 ) ? UVM_WRITE : UVM_READ;
-		rw.data = ( seq.wr_en == 1'b1 ) ? seq.wdata : seq.rdata;
+		
+		if( seq.wr_en == 1'b1 )      rw.kind = UVM_WRITE;
+		else if( seq.rd_en == 1'b1 ) rw.kind = UVM_READ;
+
+		if( seq.wr_en == 1'b1 )      rw.data = seq.wdata; 
+		else if( seq.rd_en == 1'b1 ) rw.data = seq.rdata;
+		
 		rw.addr = seq.addr;
 		rw.status = UVM_IS_OK;
+	
 	endfunction
 
 endclass
