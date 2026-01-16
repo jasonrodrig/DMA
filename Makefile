@@ -12,7 +12,7 @@ NC     := \033[0m
 #       SHORTCUTS
 # ======================
 
-all: add commit push status
+all: delete add commit push status
 sync: stash pull status
 
 # ======================
@@ -23,8 +23,8 @@ delete:
 	rm -rf ./src/covReport ./src/work 
 	rm ./src/wave.vcd ./src/coverage.ucdb 
 	rm ./src/dma_top.log ./src/simulation.log
-	rm ./src/vsim.wlf ./src/vsim_stacktrace.vstf   
-
+	#rm ./src/vsim.wlf ./src/vsim_stacktrace.vstf   
+	#rm transcript
 add:
 	@printf "$(BLUE)[ADD]$(NC) Adding files...\n"
 	@git add . || { printf "$(RED)[ERROR] add failed!$(NC)\n"; exit 1; }
