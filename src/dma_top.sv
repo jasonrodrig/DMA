@@ -30,7 +30,8 @@ module top;
 	end
 
 	initial begin 
-		run_test("dma_test");
+		run_test("dma_ctrl_test");
+	//	run_test("dma_regression_test");
 		#1000 $finish;
 	end
 

@@ -24,7 +24,7 @@ class dma_monitor extends uvm_monitor;
 	endtask
 
 	task dma_monitor_code();    
-		repeat(3) @(vif.dma_monitor_cb);
+		repeat(2) @(vif.dma_monitor_cb);
 		seq.rst_n = vif.dma_monitor_cb.rst_n ;
 		seq.wr_en = vif.dma_monitor_cb.wr_en ;
 		seq.rd_en = vif.dma_monitor_cb.rd_en ;

@@ -8,10 +8,20 @@ class dma_adapter extends uvm_reg_adapter;
 	function uvm_sequence_item reg2bus(const ref uvm_reg_bus_op rw);
 		dma_sequence_item seq;
 		seq = dma_sequence_item::type_id::create("seq");
-		seq.wr_en = ( rw.kind == UVM_WRITE ) ? 1 : 0 ;
-		seq.rd_en = ( rw.kind == UVM_READ ) ? 1 : 0 ;
+		if( rw.kind == UVM_WRITE ) 
+		begin
+			seq.wr_en = 1 ;
+		  seq.rd_en = 0 ;
+		end
+		else begin
+			seq.rd_en = 1 ;
+			seq.wr_en = 0 ;
+		end
+
 		seq.addr = rw.addr;
 		if( seq.wr_en ) seq.wdata = rw.data;
+
+		$display("wr_En = %b, rd_En = %B, addr = %d, data  = %d", seq.wr_en, seq.rd_en, rw.addr, rw.data );
 		return seq;
 	endfunction
 
@@ -27,7 +37,7 @@ class dma_adapter extends uvm_reg_adapter;
 		
 		rw.addr = seq.addr;
 		rw.status = UVM_IS_OK;
-	
+	  $display("wr_En = %b, rd_En = %B, addr = %d, wdata = %d, rdata = %d", seq.wr_en, seq.rd_en, seq.addr, seq.wdata, seq.rdata );
 	endfunction
 
 endclass

@@ -20,7 +20,7 @@ module dma
   reg [DATA_WIDTH-1:0] mem_address;
   reg [DATA_WIDTH-1:0] extra_info;
   
-  always @(posedge rst_n) begin
+  always @(posedge !rst_n) begin
 		    intr        <= 0;
 		    control     <= 0;
 		    io_address  <= 0;

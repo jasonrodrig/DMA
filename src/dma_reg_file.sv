@@ -1,14 +1,3 @@
-`include "dma_intr_register.sv"             
-`include "dma_ctrl_register.sv"             
-`include "dma_io_addr_register.sv"          
-`include "dma_mem_addr_register.sv"        
-`include "dma_extra_info_register.sv"      
-`include "dma_status_register.sv"           
-`include "dma_transfer_count_register.sv"   
-`include "dma_descriptor_addr_register.sv"  
-`include "dma_error_status_register.sv"     
-`include "dma_configure_register.sv"
-
 class dma_reg_file extends uvm_reg_file;
   `uvm_object_utils(dma_reg_file)
 
