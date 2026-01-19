@@ -21,6 +21,29 @@ class dma_test extends uvm_test;
 
 endclass
 
+class dma_reset_test extends dma_test;
+	 reset_seq rst_seq;
+	`uvm_component_utils(dma_reset_test) 
+	
+	function new(string name = "dma_reset_test", uvm_component parent); 
+		super.new(name,parent); 
+	endfunction
+	
+	function void build_phase(uvm_phase phase); 
+		super.build_phase(phase);
+		rst_seq = reset_seq::type_id::create("rst_seq"); 
+	endfunction
+	
+	task run_phase(uvm_phase phase); 
+		phase.raise_objection(this);
+		rst_seq.regbk = env.regbk; 
+		rst_seq.start(env.agt.seqr); 
+		phase.drop_objection(this); 
+		// phase.phase_done.set_drain_time(this, 20); 
+	endtask
+
+endclass
+
 /*
 
 class dma_intr_test extends dma_test;

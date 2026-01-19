@@ -8,8 +8,9 @@ import dma_pkg::*;
 module top;
 
 	bit clk = 0;
+	bit rst_n = 1;
 	always #5 clk = ~clk;
-
+  
 	dma_interface vif(clk);
 /*
 	dma DUT(
@@ -28,12 +29,20 @@ module top;
 		$dumpfile("wave.vcd");
 		$dumpvars;
 	end
+ 
+	initial begin
+   rst_n = 0;
+	 @(posedge clk);	
+   rst_n = 1;
+	end
+
 
 	initial begin 
+      run_test("dma_reset_test");
 	//	run_test("dma_intr_test");
   //	run_test("dma_ctrl_test");
 	//	run_test("dma_io_addr_test");
-		run_test("dma_mem_addr_test");
+  //	run_test("dma_mem_addr_test");
 	// 	run_test("dma_extra_info_test");
 	//	run_test("dma_status_test");
 	//	run_test("dma_transfer_count_test");

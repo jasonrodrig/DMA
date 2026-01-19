@@ -14,6 +14,7 @@ package dma_pkg;
 	`include "dma_configure_register.sv"
 	`include "dma_reg_file.sv"
 	`include "dma_reg_block.sv"
+  `include "dma_reset_sequence.sv"
 //	`include "dma_intr_sequence.sv"
 	`include "dma_ctrl_sequence.sv"
 	`include "dma_io_addr_sequence.sv"
