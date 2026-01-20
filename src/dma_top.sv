@@ -39,8 +39,8 @@ module top;
 
 	initial begin 
   //  run_test("dma_reset_test");
-	// 	run_test("dma_intr_test");
-    run_test("dma_ctrl_test");
+	//  run_test("dma_intr_test");
+  //  run_test("dma_ctrl_test");
 	//  run_test("dma_io_addr_test");
   //	run_test("dma_mem_addr_test");
 	// 	run_test("dma_extra_info_test");
@@ -50,7 +50,7 @@ module top;
   //  run_test("dma_error_status_test");
   //	run_test("dma_configure_test");
 
-	//	run_test("dma_regression_test");
+		run_test("dma_regression_test");
 		#1000 $finish;
 	end
 

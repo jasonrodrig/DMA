@@ -280,6 +280,30 @@ class dma_configure_test extends dma_test;
 endclass
 
 
+class dma_regression_test extends dma_test;
+	 dma_regression_seq reg_seq;
+	`uvm_component_utils(dma_regression_test) 
+	
+	function new(string name = "dma_regression_test", uvm_component parent); 
+		super.new(name,parent); 
+	endfunction
+	
+	function void build_phase(uvm_phase phase); 
+		super.build_phase(phase);
+		reg_seq = dma_regression_seq::type_id::create("reg_seq"); 
+	endfunction
+	
+	task run_phase(uvm_phase phase); 
+		phase.raise_objection(this);
+		reg_seq.regbk = env.regbk; 
+		reg_seq.start(env.agt.seqr); 
+		phase.drop_objection(this); 
+		// phase.phase_done.set_drain_time(this, 20); 
+	endtask
+
+endclass
+
+
 
 
 

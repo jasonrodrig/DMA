@@ -26,8 +26,18 @@ class dma_reg_block extends uvm_reg_block;
   	reg_file.error_status.configure(this);
 		reg_file.configuration.configure(this);
    
-		reg_file.intr.add_hdl_path_slice("intr_addr", 0 , 32);
-  	//reg_file.intr.intr_mask.add_hdl_path_slice("intr_mask",0, 2);
+		reg_file.intr.add_hdl_path_slice("intr_status" , 0 , 16);
+   	reg_file.intr.add_hdl_path_slice("intr_mask" , 0 , 16);
+
+//  	reg_file.ctrl.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.io_addr.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.mem_addr.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.extra_info.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.status.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.transfer_count.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.descriptor_addr.add_hdl_path_slice(" " , 0 , 32);
+//   	reg_file.error_status.add_hdl_path_slice(" " , 0 , 32);
+//  	reg_file.configuration.add_hdl_path_slice(" " , 0 , 32);
 
 		default_map.add_reg(reg_file.intr,            'h400, "RO");
 		default_map.add_reg(reg_file.ctrl,            'h404, "RW");

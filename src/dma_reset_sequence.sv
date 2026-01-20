@@ -12,7 +12,8 @@ class reset_seq extends uvm_sequence;
 		bit [31:0] rst_value;
 
 		//INTR REGISTER RESET
-		
+		`uvm_info(get_type_name()," <------------ RESET SEQUENCE STARTED ----------->\n ", UVM_MEDIUM) 	
+
 		rst_value = regbk.reg_file.intr.get_reset( ); 
 	 `uvm_info(get_type_name(), $sformatf("RESET for INTR VALUE = %0d", rst_value), UVM_MEDIUM) 
 	
@@ -180,6 +181,9 @@ class reset_seq extends uvm_sequence;
 		else `uvm_info(get_type_name(),"CONFIG register contents passed",UVM_NONE)
 
 		`uvm_info(get_type_name(), $sformatf(" CONFIG[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
+		
+		`uvm_info(get_type_name()," <------------ RESET SEQUENCE ENDED -----------> \n", UVM_MEDIUM) 	
+
 
 	endtask
 
