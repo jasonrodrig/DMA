@@ -7,6 +7,7 @@ class dma_reg_block extends uvm_reg_block;
 	endfunction
 
 	function void build();
+		add_hdl_path("dut","RTL");
 		uvm_reg::include_coverage("*", UVM_CVR_FIELD_VALS);
 		default_map = create_map("default_map", 0, 4, UVM_LITTLE_ENDIAN,1); 
 		reg_file    = dma_reg_file::type_id::create("reg_file");
@@ -24,6 +25,9 @@ class dma_reg_block extends uvm_reg_block;
 		reg_file.descriptor_addr.configure(this);
   	reg_file.error_status.configure(this);
 		reg_file.configuration.configure(this);
+   
+		reg_file.intr.add_hdl_path_slice("intr_addr", 0 , 32);
+  	//reg_file.intr.intr_mask.add_hdl_path_slice("intr_mask",0, 2);
 
 		default_map.add_reg(reg_file.intr,            'h400, "RO");
 		default_map.add_reg(reg_file.ctrl,            'h404, "RW");

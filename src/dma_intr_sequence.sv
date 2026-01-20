@@ -1,0 +1,44 @@
+class intr_seq extends uvm_sequence;
+	`uvm_object_utils(intr_seq) 
+	dma_reg_block regbk;
+
+	function new (string name = "intr_seq"); 
+		super.new(name); 
+	endfunction 
+
+	task body; 
+		uvm_status_e status; 
+		bit [31:0] w_data ,r_data; 
+		bit [31:0] mirror;
+		w_data[15:0] = 16'h1234; 
+		w_data[31:16] = 16'hABCD; 
+
+		`uvm_info(get_type_name(),"performing backdoor write method", UVM_MEDIUM)
+		`uvm_info(get_type_name(), $sformatf(" INTR[15:0] = %0d | INTR[31:15] = %0d ", w_data[15:0], w_data[31:16] ), UVM_MEDIUM) 
+		`uvm_info(get_type_name(),"Writing w_data to the dut INTR register \n", UVM_MEDIUM) 
+		regbk.reg_file.intr.poke( status, w_data,.parent(this) ); 
+
+    if (status != UVM_IS_OK) `uvm_error(get_type_name(), "INTR register backdoor write failed\n") 
+
+		`uvm_info(get_type_name()," performing predict method ", UVM_MEDIUM) 
+
+		regbk.reg_file.intr.predict( w_data ); 
+		mirror = regbk.reg_file.intr.get_mirrored_value(); 
+		
+		`uvm_info(get_type_name(), $sformatf("INTR mirrored = %0d\n", mirror), UVM_MEDIUM)
+
+		`uvm_info(get_type_name()," performing frontdoor read method ", UVM_MEDIUM) 
+ 
+		regbk.reg_file.intr.read( status, r_data,.parent(this) ); 
+		`uvm_info(get_type_name(), $sformatf("Read INTR = %0d\n", r_data), UVM_MEDIUM) 
+
+		if (status != UVM_IS_OK) `uvm_error(get_type_name(), "INTR register read failed\n") 
+
+		if (r_data != mirror ) `uvm_error(get_type_name(), "intr_reg mismatch\n") 
+		else `uvm_info(get_type_name(),"INTR register contents passed\n",UVM_NONE)
+
+		`uvm_info( get_type_name(), $sformatf( "INTR[15:0] = %0d | INTR[31:16] = %0d\n", r_data[15:0], r_data[31:16] ), UVM_MEDIUM) 
+	endtask
+
+endclass
+

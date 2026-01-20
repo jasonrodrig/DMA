@@ -22,18 +22,7 @@ class dma_driver extends uvm_driver#(dma_sequence_item);
 	endtask
 
 	task dma_driver_code();    
-		if(req.rst_n) begin // rst_n operation
-			@(vif.dma_driver_cb);
-			vif.dma_driver_cb.rst_n <= 0;
-			vif.dma_driver_cb.wr_en <= 0;
-			vif.dma_driver_cb.rd_en <= 0;
-			vif.dma_driver_cb.addr  <= req.addr;
-			vif.dma_driver_cb.wdata <= 0;
-			repeat(2) @(vif.dma_driver_cb);
-			vif.dma_driver_cb.rst_n <= 1;
-		end
-
-		else if(req.wr_en) begin //write operation
+	  if(req.wr_en) begin //write operation
 			vif.dma_driver_cb.wr_en <= 1;
 			vif.dma_driver_cb.rd_en <= 0;
 			vif.dma_driver_cb.rst_n <= 1;

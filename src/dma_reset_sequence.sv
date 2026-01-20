@@ -26,7 +26,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "INTR mismatch") 
 		else `uvm_info(get_type_name(),"INTR register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" INTR[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" INTR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
 		//CTRL REGISTER RESET
 	
@@ -43,7 +43,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "CTRL mismatch") 
 		else `uvm_info(get_type_name(),"CTRL register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" CTRL[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" CTRL[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
    // IO_ADDR RESET
 
@@ -60,7 +60,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "IO_ADDR mismatch") 
 		else `uvm_info(get_type_name(),"IO_ADDR register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" IO_ADDR[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" IO_ADDR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
    // MEM_ADDR RESET
 	
@@ -77,7 +77,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "MEM_ADDR mismatch") 
 		else `uvm_info(get_type_name(),"MEM_ADDR register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" MEM_ADDR[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" MEM_ADDR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
 		// EXTRA_INFO RESET
 		
@@ -94,7 +94,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "EXTRA_INFO mismatch") 
 		else `uvm_info(get_type_name(),"EXTRA_INFO register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" EXTRA_INFO[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" EXTRA_INFO[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
     //STATUS RESET
 
@@ -111,7 +111,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "STATUS mismatch") 
 		else `uvm_info(get_type_name(),"STATUS register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" STATUS[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" STATUS[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
 		//TRANSFER_COUNT RESET
 
@@ -128,7 +128,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "TRANSFER_COUNT mismatch") 
 		else `uvm_info(get_type_name(),"TRANSFER_COUNT register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" TRANSFER_COUNT[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" TRANSFER_COUNT[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
     // DESCRIPTOR_ADDR RESET
   
@@ -145,7 +145,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "DESCRIPTOR_ADDR mismatch") 
 		else `uvm_info(get_type_name(),"DESCRIPTOR_ADDR register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" DESCRIPTOR_ADDR[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" DESCRIPTOR_ADDR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
     // ERROR_STATUS RESET
 
@@ -162,7 +162,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "ERROR_STATUS mismatch") 
 		else `uvm_info(get_type_name(),"ERROR_STATUS register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" ERROR_STATUS[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" ERROR_STATUS[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
   
 		//CONFIGURATION RESET
 
@@ -179,7 +179,7 @@ class reset_seq extends uvm_sequence;
 		if (r_data != rst_value) `uvm_error(get_type_name(), "CONFIG mismatch") 
 		else `uvm_info(get_type_name(),"CONFIG register contents passed",UVM_NONE)
 
-		`uvm_info(get_type_name(), $sformatf(" CONFIG[31:0] = %0d" , r_data), UVM_MEDIUM) 
+		`uvm_info(get_type_name(), $sformatf(" CONFIG[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 
 	endtask
 

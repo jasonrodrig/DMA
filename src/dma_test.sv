@@ -44,7 +44,6 @@ class dma_reset_test extends dma_test;
 
 endclass
 
-/*
 
 class dma_intr_test extends dma_test;
 	intr_seq it_seq;
@@ -68,7 +67,7 @@ class dma_intr_test extends dma_test;
 	endtask
 
 endclass
-*/
+
 
 class dma_ctrl_test extends dma_test;
 	ctrl_seq ct_seq;
@@ -232,7 +231,7 @@ class dma_descriptor_addr_test extends dma_test;
 
 endclass
 
-/*
+
 class dma_error_status_test extends dma_test;
 	error_status_seq err_seq;
 	`uvm_component_utils(dma_error_status_test) 
@@ -255,7 +254,7 @@ class dma_error_status_test extends dma_test;
 	endtask
 
 endclass
-*/
+
 
 class dma_configure_test extends dma_test;
 	 configure_seq con_seq;
