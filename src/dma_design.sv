@@ -1,4 +1,5 @@
- module dma_design (
+ 
+  module dma_design (
     input  logic        clk,
     input  logic        rst_n,
     
@@ -296,4 +297,169 @@
 
 endmodule
 
+/*
+
+
+module dma_design (
+    input  logic        clk,
+    input  logic        rst_n,
  
+    // Register Interface
+    input  logic        wr_en,
+    input  logic        rd_en,
+    input  logic [31:0] wdata,
+    input  logic [31:0] addr,
+    output logic [31:0] rdata
+);
+ 
+    //===========================================
+    // Register Addresses
+    //===========================================
+    parameter INTR_ADDR           = 32'h400;
+    parameter CTRL_ADDR           = 32'h404;
+    parameter IO_ADDR_ADDR        = 32'h408;
+    parameter MEM_ADDR_ADDR       = 32'h40C;
+    parameter EXTRA_INFO_ADDR     = 32'h410;
+    parameter STATUS_ADDR         = 32'h414;
+    parameter TRANSFER_COUNT_ADDR = 32'h418;
+    parameter DESCRIPTOR_ADDR     = 32'h41C;
+    parameter ERROR_STATUS_ADDR   = 32'h420;
+    parameter CONFIG_ADDR         = 32'h424;
+ 
+    //===========================================
+    // Packed Registers (RAL Backdoor Targets)
+    //===========================================
+    logic [31:0] intr_reg;
+    logic [31:0] ctrl_reg;
+    logic [31:0] io_addr_reg;
+    logic [31:0] mem_addr_reg;
+    logic [31:0] extra_info_reg;
+    logic [31:0] status_reg;
+    logic [31:0] transfer_count_reg;
+    logic [31:0] descriptor_addr_reg;
+    logic [31:0] error_status_reg;
+    logic [31:0] config_reg;
+ 
+    //===========================================
+    // CTRL field aliases
+    //===========================================
+    wire        ctrl_start_dma = ctrl_reg[0];
+    wire [14:0] ctrl_w_count   = ctrl_reg[15:1];
+    wire        ctrl_io_mem    = ctrl_reg[16];
+ 
+    //===========================================
+    // WRITE LOGIC
+    //===========================================
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            intr_reg           <= 32'h0;
+            ctrl_reg           <= 32'h0;
+            io_addr_reg        <= 32'h0;
+            mem_addr_reg       <= 32'h0;
+            extra_info_reg     <= 32'h0;
+            transfer_count_reg <= 32'h0;
+            descriptor_addr_reg<= 32'h0;
+            error_status_reg   <= 32'h0;
+            config_reg         <= 32'h0;
+        end
+        else if (wr_en) begin
+            case (addr)
+                INTR_ADDR: begin
+                    intr_reg[31:16] <= wdata[31:16];   // mask RW
+                end
+ 
+                CTRL_ADDR: begin
+                    ctrl_reg <= wdata;
+                end
+ 
+                IO_ADDR_ADDR: begin
+                    io_addr_reg <= wdata;
+                end
+ 
+                MEM_ADDR_ADDR: begin
+                    mem_addr_reg <= wdata;
+                end
+ 
+                EXTRA_INFO_ADDR: begin
+                    extra_info_reg <= wdata;
+                end
+ 
+                DESCRIPTOR_ADDR: begin
+                    descriptor_addr_reg <= wdata;
+                end
+ 
+                ERROR_STATUS_ADDR: begin
+                    // RW1C bits [4:0]
+                    error_status_reg[4:0] <=
+                        error_status_reg[4:0] & ~wdata[4:0];
+                end
+ 
+                CONFIG_ADDR: begin
+                    config_reg <= wdata;
+                end
+            endcase
+        end
+        else begin
+            // Auto clear start_dma pulse
+            if (ctrl_reg[0])
+                ctrl_reg[0] <= 1'b0;
+        end
+    end
+ 
+    //===========================================
+    // READ LOGIC
+    //===========================================
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            rdata <= 32'h0;
+        else if (rd_en) begin
+            case (addr)
+                INTR_ADDR:           rdata <= intr_reg;
+                CTRL_ADDR:           rdata <= ctrl_reg;
+                IO_ADDR_ADDR:        rdata <= io_addr_reg;
+                MEM_ADDR_ADDR:       rdata <= mem_addr_reg;
+                EXTRA_INFO_ADDR:     rdata <= extra_info_reg;
+                STATUS_ADDR:         rdata <= status_reg;
+                TRANSFER_COUNT_ADDR: rdata <= transfer_count_reg;
+                DESCRIPTOR_ADDR:     rdata <= descriptor_addr_reg;
+                ERROR_STATUS_ADDR:   rdata <= error_status_reg;
+                CONFIG_ADDR:         rdata <= config_reg;
+                default:             rdata <= 32'h0;
+            endcase
+        end
+    end
+ 
+    //===========================================
+    // DMA STATUS & TRANSFER LOGIC
+    //===========================================
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            status_reg         <= 32'h0;
+            transfer_count_reg <= 32'h0;
+            intr_reg[15:0]     <= 16'h0;
+        end
+        else begin
+            if (ctrl_start_dma) begin
+                status_reg[0]   <= 1'b1; // busy
+                status_reg[1]   <= 1'b0; // done
+                status_reg[7:4] <= 4'h1; // ACTIVE
+                transfer_count_reg <= 32'h0;
+            end
+            else if (status_reg[0]) begin
+                transfer_count_reg <= transfer_count_reg + 1;
+ 
+                if (transfer_count_reg >= ctrl_w_count) begin
+                    status_reg[0]   <= 1'b0; // busy
+                    status_reg[1]   <= 1'b1; // done
+                    status_reg[7:4] <= 4'h0; // IDLE
+                    intr_reg[0]     <= 1'b1;
+                end
+ 
+                status_reg[15:8] <= transfer_count_reg[7:0];
+            end
+        end
+    end
+ 
+endmodule
+
+*/

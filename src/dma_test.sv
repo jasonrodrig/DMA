@@ -160,7 +160,7 @@ class dma_extra_info_test extends dma_test;
 	endtask
 
 endclass
-/*
+
 class dma_status_test extends dma_test;
 	status_seq stat_seq;
 	`uvm_component_utils(dma_status_test) 
@@ -206,7 +206,6 @@ class dma_transfer_count_test extends dma_test;
 	endtask
 
 endclass
-*/
 
 class dma_descriptor_addr_test extends dma_test;
 	descriptor_addr_seq des_seq;

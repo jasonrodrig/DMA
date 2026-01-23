@@ -1,0 +1,119 @@
+# vsim top -voptargs="+acc=npr" -l top.log -c -do "run -all;quit;" 
+# Start time: 12:41:18 on Jan 21,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading mtiUvm.uvm_pkg
+# Loading work.dma_top_sv_unit(fast)
+# Loading work.top(fast)
+# Loading work.dma_interface(fast)
+# Loading work.dma_design(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.dma_interface(fast)
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test dma_ctrl_test...
+# [1;32m[INFO] [0m [1;36m(ID=UVMTOP)[0m [1;34m[time = 0][0m UVM testbench topology:
+# ------------------------------------------------------------------------------
+# Name                       Type                                    Size  Value
+# ------------------------------------------------------------------------------
+# uvm_test_top               dma_ctrl_test                           -     @473 
+#   dma_env                  dma_env                                 -     @480 
+#     agt                    dma_agent                               -     @515 
+#       driv                 dma_driver                              -     @603 
+#         rsp_port           uvm_analysis_port                       -     @618 
+#         seq_item_port      uvm_seq_item_pull_port                  -     @610 
+#       mon                  dma_monitor                             -     @626 
+#         mon_port           uvm_analysis_port                       -     @633 
+#       seqr                 dma_sequencer                           -     @641 
+#         rsp_export         uvm_analysis_export                     -     @648 
+#         seq_item_export    uvm_seq_item_pull_imp                   -     @742 
+#         arbitration_queue  array                                   0     -    
+#         lock_queue         array                                   0     -    
+#         num_last_reqs      integral                                32    'd1  
+#         num_last_rsps      integral                                32    'd1  
+#     predictor              uvm_reg_predictor #(dma_sequence_item)  -     @492 
+#       bus_in               uvm_analysis_imp                        -     @499 
+#       reg_ap               uvm_analysis_port                       -     @507 
+#     sub                    dma_subscriber                          -     @522 
+#       mon_import           uvm_analysis_imp                        -     @529 
+# ------------------------------------------------------------------------------
+# 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m  <------------ CTRL SEQUENCE STARTED ----------->
+#  
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m  CTRL[0] = 1 | CTRL[15:1] = 24036 | CTRL[16] = 0
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m Writing CTRL = 48073
+# UVM_ERROR: Unable to read value from 'DUT.ctrl_reg'
+#  Either the path is incorrect, or you may not have PLI/ACC visibility to that object.
+# [1;31m[ERROR] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m CTRL register write failed
+# 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m CTRL mirrored = 0
+# 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 0][0m perform read operation on ist cycle CTRL 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 15][0m Read CTRL = 0
+# [1;31m[ERROR] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 15][0m ctrl_mem mismatch
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 15][0m  CTRL[0] = 0 | CTRL[15:1] = 0 | CTRL[16] = 0
+# 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 15][0m perform read operation on 2st cycle CTRL 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 35][0m Read CTRL = 0
+# [1;31m[ERROR] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 35][0m ctrl_mem mismatch
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 35][0m  CTRL[0] = 0 | CTRL[15:1] = 0 | CTRL[16] = 0
+# 
+# [1;32m[INFO] [0m [1;36m(ID=ctrl_seq)[0m [1;34m[time = 35][0m  <------------ CTRL SEQUENCE ENDED ----------->
+#  
+# [1;32m[INFO] [0m [1;36m(ID=TEST_DONE)[0m [1;34m[time = 35][0m 'run' phase is ready to proceed to the 'extract' phase
+# [1;32m[INFO] [0m [1;36m(ID=dma_subscriber)[0m [1;34m[time = 35][0m [SUBSCRIBER] Coverage ------> 51.25%,
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   17
+# UVM_WARNING :    0
+# UVM_ERROR :    3
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# [ctrl_seq]    14
+# [dma_subscriber]     1
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 35 ns  Iteration: 62  Instance: /top
+# End time: 12:41:21 on Jan 21,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

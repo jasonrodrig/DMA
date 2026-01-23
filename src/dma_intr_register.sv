@@ -79,7 +79,7 @@ class dma_intr_reg extends uvm_reg;
 			.parent(this),
 			.size(16),
 			.lsb_pos(16),
-			.access("RO"),
+			.access("RW"),
 			.volatile(0),
 			.reset('h0),
 			.has_reset(1),

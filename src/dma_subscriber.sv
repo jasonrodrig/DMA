@@ -23,12 +23,15 @@ class dma_subscriber extends uvm_component;
 			bins descriptor_addr      = {[1052:1055]};
 			bins error_status_addr    = {[1056:1059]};
 			bins configure_addr       = {[1060:1064]};
-			ignore_bins other_addr1[] = {[0:1023]};
+		//  ignore_bins other_addr1[] = {[0:1023]};
     //	ignore_bins other_addr2[] = {[1065:$]};
 		}
 		
-		reset_cpxwr_en_cp: cross reset_cp , wr_en_cp;
-		reset_cpxrd_en_cp: cross reset_cp , rd_en_cp;
+		rd_en_cpxwr_en_cp: cross rd_en_cp , wr_en_cp{
+		 ignore_bins ignore_write_disbale = binsof(wr_en_cp) intersect {1} && binsof(rd_en_cp) intersect {0};
+     ignore_bins ignore_read_disbale  = binsof(rd_en_cp) intersect {0} && binsof(wr_en_cp) intersect {1};
+		}
+	
 	endgroup
 
 	function new(string name = "dma_subscriber", uvm_component parent);

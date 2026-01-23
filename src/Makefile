@@ -1,3 +1,14 @@
+#compile:
+#			vlib work;
+#			vlog -sv dma_top.sv
+					 
+#simulate:
+			#vsim top -voptargs=+acc=npr -l top.log -c -do "run -all;quit;"
+			 #vsim -novopt work.top
+#			 vsim -c work.top
+#clear:
+#			clear
+
 QUESTA := /home/share/questa.csh
 SHELL := /bin/csh
 
@@ -44,3 +55,4 @@ clean:
 
 clear:
 	clear
+

@@ -44,13 +44,13 @@ module top;
 	//  run_test("dma_io_addr_test");
   //	run_test("dma_mem_addr_test");
 	// 	run_test("dma_extra_info_test");
-	//	run_test("dma_status_test");
-	//	run_test("dma_transfer_count_test");
+  //	run_test("dma_status_test");
+  // 	run_test("dma_transfer_count_test");
 	//	run_test("dma_descriptor_addr_test");
   //  run_test("dma_error_status_test");
   //	run_test("dma_configure_test");
 
-		run_test("dma_regression_test");
+	  run_test("dma_regression_test");
 		#1000 $finish;
 	end
 
