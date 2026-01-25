@@ -9,7 +9,10 @@ class transfer_count_seq extends uvm_sequence;
 	task body; 
 		uvm_status_e status; 
 		bit [31:0] w_data , r_data, temp ; 
+			
+		regbk.reg_file.transfer_count.write( status, w_data);// just to dleat reset; 
 		
+		repeat(`N) begin
 		w_data = $urandom;  
     temp = w_data;
 		`uvm_info(get_type_name()," <------------ TRANSFER_COUNT SEQUENCE STARTED -----------> \n", UVM_MEDIUM) 	
@@ -52,6 +55,7 @@ class transfer_count_seq extends uvm_sequence;
 
 		`uvm_info(get_type_name()," <------------ TRANSFER_COUNT SEQUENCE ENDED ----------->\n ", UVM_MEDIUM) 	
 
+		end
 	endtask
 
 endclass

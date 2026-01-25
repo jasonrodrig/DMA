@@ -17,7 +17,7 @@ function void build_phase(uvm_phase phase);
 	agt = dma_agent::type_id::create("agt", this);
 	sub = dma_subscriber::type_id::create("sub", this);
 	regbk = dma_reg_block::type_id::create("regbk", this);
-	Adapter = dma_adapter::type_id::create("adapter");
+	adapter = dma_adapter::type_id::create("adapter");
 	regbk.set_hdl_path_root("top.DUT");
 	regbk.build();
 endfunction

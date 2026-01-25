@@ -10,7 +10,11 @@ class extra_info_seq extends uvm_sequence;
 		uvm_status_e status; 
 		bit [31:0] w_data ,r_data; 
 		bit [31:0] mirror;
-    
+
+		regbk.reg_file.extra_info.write( status, w_data,.parent(this) );  // just to delay reset;
+
+		repeat(`N) begin
+
 		w_data = $urandom();
 
 		`uvm_info(get_type_name()," <------------ EXTRA_INFO SEQUENCE STARTED ----------->\n ", UVM_MEDIUM) 	
@@ -35,7 +39,8 @@ class extra_info_seq extends uvm_sequence;
 		`uvm_info(get_type_name(), $sformatf(" EXTRA_INFO[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 				
 		`uvm_info(get_type_name()," <------------ EXTRA_INFO SEQUENCE ENDED ----------->\n ", UVM_MEDIUM) 	
-
+		
+		end
 	endtask
 
 endclass

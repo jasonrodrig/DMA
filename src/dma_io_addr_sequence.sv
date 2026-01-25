@@ -10,7 +10,11 @@ class io_addr_seq extends uvm_sequence;
 		uvm_status_e status; 
 		bit [31:0] w_data ,r_data; 
 		bit [31:0] mirror;
-    
+
+		regbk.reg_file.io_addr.write( status, w_data,.parent(this) ); // just to delay reset 
+
+		repeat(`N) begin
+
 		w_data = $urandom();
 
 		`uvm_info(get_type_name()," <------------ IO_ADDR SEQUENCE STARTED ----------->\n ", UVM_MEDIUM) 	
@@ -35,7 +39,8 @@ class io_addr_seq extends uvm_sequence;
 		`uvm_info(get_type_name(), $sformatf(" IO_ADDR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 	
 		`uvm_info(get_type_name()," <------------ IO_ADDR SEQUENCE ENDED ----------->\n ", UVM_MEDIUM) 	
-
+     
+		end
 	endtask
 
 endclass

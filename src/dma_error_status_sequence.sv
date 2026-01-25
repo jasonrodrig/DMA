@@ -10,7 +10,10 @@ class error_status_seq extends uvm_sequence;
 		uvm_status_e status; 
 		bit [31:0] w_data ,r_data; 
 		//bit [31:0] mirror;
-    
+
+		regbk.reg_file.error_status.write( status, w_data,.parent(this) ); // just to delay reset
+
+		repeat(`N	) begin
 		w_data = $urandom();
 
 		`uvm_info(get_type_name()," <------------ ERROR_STATUS SEQUENCE STARTED ----------->\n ", UVM_MEDIUM) 	
@@ -35,7 +38,8 @@ class error_status_seq extends uvm_sequence;
 		`uvm_info(get_type_name(), $sformatf(" ERROR_STATUS[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
     
 		`uvm_info(get_type_name()," <------------ ERROR_STATUS SEQUENCE FINISHED ----------->\n ", UVM_MEDIUM) 	
-
+     
+		end
 	endtask
 
 endclass

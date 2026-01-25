@@ -10,7 +10,10 @@ class mem_addr_seq extends uvm_sequence;
 		uvm_status_e status; 
 		bit [31:0] w_data ,r_data; 
 		bit [31:0] mirror;
-    
+   
+		regbk.reg_file.mem_addr.write( status, w_data,.parent(this) ); // just to delay reset 
+
+		repeat(`N) begin
 		w_data = $urandom();
     `uvm_info(get_type_name()," <------------ MEM_ADDR SEQUENCE STARTED ----------->\n ", UVM_MEDIUM) 	
 
@@ -34,7 +37,8 @@ class mem_addr_seq extends uvm_sequence;
 		`uvm_info(get_type_name(), $sformatf(" MEM_ADDR[31:0] = %0d\n" , r_data), UVM_MEDIUM) 
 				
 		`uvm_info(get_type_name()," <------------ MEM_ADDR SEQUENCE ENDED ----------->\n ", UVM_MEDIUM) 	
-
+  
+		end
 	endtask
 
 endclass

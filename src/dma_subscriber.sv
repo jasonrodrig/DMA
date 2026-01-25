@@ -7,7 +7,7 @@ class dma_subscriber extends uvm_component;
 
 	covergroup cvgrp;
 		option.per_instance = 1;
-		reset_cp  : coverpoint mon_sig.rst_n { bins b1[] = { 0 , 1 };}
+		reset_cp  : coverpoint mon_sig.rst_n { bins b1   = { 0 , 1 };}
 		wr_en_cp  : coverpoint mon_sig.wr_en { bins b2[] = { 0 , 1 };}
 		rd_en_cp  : coverpoint mon_sig.rd_en { bins b3[] = { 0 , 1 };}
 		wdata_cp  : coverpoint mon_sig.wdata { bins b5   = { [ 0 : $ ] };} 
@@ -27,10 +27,10 @@ class dma_subscriber extends uvm_component;
     //	ignore_bins other_addr2[] = {[1065:$]};
 		}
 		
-		rd_en_cpxwr_en_cp: cross rd_en_cp , wr_en_cp{
-		 ignore_bins ignore_write_disbale = binsof(wr_en_cp) intersect {1} && binsof(rd_en_cp) intersect {0};
-     ignore_bins ignore_read_disbale  = binsof(rd_en_cp) intersect {0} && binsof(wr_en_cp) intersect {1};
-		}
+//		rd_en_cpxwr_en_cp: cross rd_en_cp , wr_en_cp{
+//		 ignore_bins ignore_write_disbale = binsof(wr_en_cp) intersect {1} && binsof(rd_en_cp) intersect {0};
+//    ignore_bins ignore_read_disbale  = binsof(rd_en_cp) intersect {0} && binsof(wr_en_cp) intersect {1};
+//		}
 	
 	endgroup
 

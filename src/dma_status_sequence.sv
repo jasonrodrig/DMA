@@ -10,6 +10,11 @@ class status_seq extends uvm_sequence;
 		uvm_status_e stat; 
 		bit [31:0] w_data ,r_data; 
 		bit [31:0] temp;
+		
+		regbk.reg_file.status.write( stat, w_data );  // jsut to delay reset;
+
+		repeat(`N) begin
+
 		w_data[0] = $urandom;
 		w_data[1] = $urandom;
 		w_data[2] = $urandom;
@@ -64,7 +69,8 @@ class status_seq extends uvm_sequence;
 		`uvm_info(get_type_name(), $sformatf(" STATUS[0] = %0d | STATUS[1] = %0d | STATUS[2] = %0d | STATUS[3] = %0d | STATUS[7:4] = %0d | STATUS[15:8] = %0d\n", r_data[0] , r_data[1] , r_data[2] , r_data[3] , r_data[7:4] , r_data[15:8] ), UVM_MEDIUM) 
 	
 		`uvm_info(get_type_name()," <------------ STATUS SEQUENCE ENDED ----------->\n ", UVM_MEDIUM) 	
-
+		
+		end
 	endtask
 
 endclass
